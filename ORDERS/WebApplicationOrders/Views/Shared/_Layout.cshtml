@@ -3,37 +3,110 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Peluches.OSO</title>
+    <title>@ViewData["Title"] - Private Investigation Technology</title>
+
+    <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Include Custom CSS Files -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebApplicationOrders.styles.css" asp-append-version="true" />
+
+    <!-- Include Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- Include Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Optional: Inline styles for testing -->
+    <style>
+        body {
+            background-color: #f5f7fa; /* Fondo más claro */
+        }
+
+        .navbar {
+            background-color: #343a40; /* Fondo del navbar en un gris oscuro */
+        }
+
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #ffffff !important; /* Color del texto del navbar */
+        }
+
+        .button-container {
+            background-color: #e9ecef; /* Fondo detrás de los botones */
+            padding: 10px;
+            border-radius: 8px; /* Borde más redondeado */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        }
+
+        .custom-button {
+            color: #ffffff !important; /* Color del texto del botón */
+            background-color: #5a67d8; /* Color de fondo azul moderno */
+            border-color: transparent; /* Sin borde */
+            padding: 10px 20px;
+            margin-right: 10px;
+            border-radius: 30px; /* Botón redondeado */
+            text-decoration: none;
+            font-weight: bold; /* Negrita */
+            transition: transform 0.3s ease, opacity 0.3s ease; /* Transición suave */
+        }
+
+            .custom-button.product {
+                background-color: #48bb78; /* Verde pastel */
+            }
+
+            .custom-button.customer {
+                background-color: #4299e1; /* Azul pastel */
+            }
+
+            .custom-button.supplier {
+                background-color: #f6ad55; /* Naranja pastel */
+            }
+
+            .custom-button:hover {
+                transform: translateY(-3px); /* Movimiento al pasar el cursor */
+                opacity: 0.85; /* Ligeramente más opaco al hacer hover */
+            }
+
+        .footer {
+            background-color: #2d3748; /* Color de fondo del pie de página */
+            color: #e2e8f0; /* Color del texto en gris claro */
+        }
+
+            .footer a {
+                color: #cbd5e0 !important; /* Color del texto del pie de página */
+                text-decoration: underline; /* Subrayado */
+            }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Peluches.oso</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+        <nav class="navbar navbar-expand-lg navbar-dark border-bottom box-shadow mb-4">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Control de Órdenes</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Customers" asp-action="Index">Clientes</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
                         </li>
                     </ul>
+                    <div class="button-container">
+                        <a href="@Url.Action("Index", "Product")" class="custom-button product">Productos</a>
+                        <a href="@Url.Action("Index", "Customer")" class="custom-button customer">Clientes</a>
+                        <a href="@Url.Action("Index", "Supplier")" class="custom-button supplier">Proveedores</a>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -42,12 +115,16 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - Peluches.OSO - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 -  Investigacion Alejandro Castro - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
         </div>
     </footer>
+
+    <!-- Include JavaScript Files -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- Render additional scripts -->
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
